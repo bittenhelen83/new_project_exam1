@@ -9,7 +9,7 @@ const api = {
 	}
 };
 
-const url = "https://api.spoonacular.com/recipes/complexSearch??query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&offset=0&number=100"
+const url = "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&offset=0&number=100"
 
 const corsFix = "https://noroffcors.herokuapp.com/" + url;
 
@@ -29,7 +29,7 @@ async function getRecipe() {
         let cssClass = "far";
 
         const doesObjectExist = favourites.find(function(fav) {
-            console.log(fav);
+            
             return parseInt(fav.id) === recipe.id;
         })
 
@@ -67,8 +67,6 @@ function handleClick() {
     const recipeExists = currentFavs.find(function(fav) {
         return fav.id === id;
     });
-
-    console.log("recipeExist", recipeExists);
 
     if(!recipeExists) {
         const recipe = {id: id, title: title};
