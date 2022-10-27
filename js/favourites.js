@@ -1,4 +1,4 @@
-import { getExistingFavs } from "./favFunctions.js";
+import { getExistingFavs } from "./data/favFunctions.js";
 
 const favourites = getExistingFavs();
 
@@ -16,7 +16,6 @@ favourites.forEach(favourite => {
                                     </div>`
     
 });
-
 
 async function thumbnailSize() {
     
