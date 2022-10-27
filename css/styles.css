@@ -20,16 +20,15 @@ h2 {
     text-align: center;
 }
 
-.active {
-        
-}
-
-.message.error {
-    border-color: red;
-    color: red;
-}
-
 /* Header styles */
+.logo {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    width: 100px;
+    padding: 20px;
+}
+
 li {
     display: inline;
     width: 500px;
@@ -52,37 +51,35 @@ a:hover {
     text-decoration: underline;
 }
 
-.active {
-    color: #304C0C;
-    text-decoration: none;
-}
-
 nav {
     margin: 0 auto;
     text-align: center;
     padding: 20px;
-} 
+}
 
-.logo {
-    display: block;
-    margin: 0 auto;
-    text-align: center;
-    width: 100px;
-    padding: 20px;
+.active {
+    color: #304C0C;
+    text-decoration: none;
 }
 
 .header {
     height: 100px;
 }
 
-/* Main styles */
-main {
-    width: 100%;
-    background-color: #79A640;
-    height: 100%;
+/* Error styles */
+.message.error {
+    border-color: red;
+    color: red;
 }
 
-/* searcbar styles */
+/* Main styles */
+main {
+    background-color: #79A640;
+    height: 100%;
+    width: 100%;
+}
+
+/* Searcbar styles */
 .searchField {
     background-image: url(/images/topphoto.jpg);
     background-size: contain;
@@ -98,15 +95,12 @@ main {
     top: 50%;
 }
 
-.searchField2 {
+.searchFieldSecond {
     width: 100%;
-    /* height: 0; */
-    padding-top: 40%;
 }
 
-.searchForm2 {
-    position: absolute;
-    left: 5%;
+.searchFormSecond {
+    text-align: center;
     top: 50%;
 }
 
@@ -117,7 +111,7 @@ input {
     box-sizing: border-box;
 }
 
-.input {
+.inputBox {
     background: #fff;
     width: 300px;
     height: 50px;
@@ -141,16 +135,16 @@ input {
 }
 
 .filterBoxes {
-    list-style-type: disc;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 13px;
     background-color: rgba(255,255,255, 0.5);
-    padding: 5px;
     border-radius: 25px;
+    width: 600px;
+    margin: 0 auto;
+    padding-bottom: 10px;
 }
-
 
 /* Form styles */
 .container {
@@ -254,3 +248,40 @@ textarea {
     border-radius: 25px 25px 0 0;
     max-width: 100%;
 }
+
+/* Footer styles */
+footer {
+    text-align: center;
+    margin: 10px;
+    font-size: 20px;
+    overflow: auto;
+    clear: both;
+    color: #79A640;
+}
+
+.footerContainer {
+    display: inline;
+    vertical-align: middle;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.footerLogo {
+    width: 40px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* footer {
+    display: inline;
+    height: 100px;
+    text-align: center;
+}
+
+footer p {
+    display: inline;
+}
+
+.footerLogo {
+    width: 35px;
+} */

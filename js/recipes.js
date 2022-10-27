@@ -1,7 +1,6 @@
 import { displayMessage } from "./data/displayMessage.js";
 import { getExistingFavs } from "./data/favFunctions.js";
 const recipeContainer = document.querySelector(".recipeContainer");
-const search = document.querySelector(".input")
 
 const api = {
 	method: 'GET',
@@ -10,107 +9,45 @@ const api = {
 	}
 };
 
-const url = "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=100"
+const url = "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=50"
 
 const corsFix = "https://noroffcors.herokuapp.com/" + url;
 
-const favourites = getExistingFavs();
-
 async function getRecipe() {
 
-    const response = await fetch(corsFix, api, favourites);
+    const response = await fetch(corsFix, api)
 
     const json = await response.json();
 
-    const recipe = json.results;
+    const recipes = json.results;
 
-    console.log(recipe);
+    console.log(recipes);
 
-    recipe.forEach(recipe => {
-        let cssClass = "far";
+    recipes.forEach(recipe => {
 
-        const doesObjectExist = favourites.find(function(fav) {
-            
-            return parseInt(fav.id) === recipe.id;
-        })
-
-        if(doesObjectExist) {
-            cssClass = "fa";
-        }
-        else
         recipeContainer.innerHTML += `<div class="recipe">
                                         <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div></a>
                                         <h2>${recipe.title}</h2>
-                                        <i class="${cssClass} fa-heart" data-id="${recipe.id}" data-title="${recipe.title}"></i> 
-                                        </div>`
-        
-    });
-
-    const favButtons = document.querySelectorAll(".recipe i");
-
-    favButtons.forEach(heart => {
-        heart.addEventListener("click", handleClick);
-    });
-
-    function handleClick() {
-    
-        this.classList.toggle("fa");
-        this.classList.toggle("far");
-
-        const id = this.dataset.id;
-    
-        const title = this.dataset.title;
-
-        const currentFavs = getExistingFavs();
-
-        const recipeExists = currentFavs.find(function(fav) {
-            return fav.id === id;
-        });
-
-        if(!recipeExists) {
-            const recipe = {id: id, title: title};
-            currentFavs.push(recipe);
-            saveFavs(currentFavs);
-        }
-        else {
-            const newFavs = currentFavs.filter(fav => fav.id !== id);
-            saveFavs(newFavs);
-        }
-    }
-
-    function saveFavs(favs) {
-        localStorage.setItem("favourites", JSON.stringify(favs));
-    }
-
-    search.onkeyup = function() {
-    
-        const searchValue = event.target.value.trim().toLowerCase();
-
-        const filteredRecipes = recipe.filter(function(getRecipe) {
-            if(getRecipe.title.toLowerCase().startsWith(searchValue)) {
-                return true;
-            }
-        })
-
-        console.log(filteredRecipes);
-
-        recipe = filteredRecipes
-    }
-
+                                    </div>`
+    })
 }
 
 getRecipe();
 
-async function thumbnailSize() {
+
+
+
+
+// async function thumbnailSize() {
     
-    let thumbnail = document.querySelector(".thumbnail")
+//     let thumbnail = document.querySelector(".thumbnail")
 
-    if(thumbnail.style.height >= thumbnail.style.width) {
+//     if(thumbnail.style.height >= thumbnail.style.width) {
 
-        thumbnail.style.height = `200px`
-    }   else {
-        thumbnail.style.width = `200px`
-}
-}
+//         thumbnail.style.height = `200px`
+//     }   else {
+//         thumbnail.style.width = `200px`
+//     }
+// }
 
-thumbnailSize();
+// thumbnailSize();
