@@ -188,6 +188,13 @@ textarea {
     color: #304C0C;    
 }
 
+.formError {
+    display: none;
+    color: red;
+    font-size: 12px;
+    margin-top: 2px;
+}
+
 .aboutContainer {
     flex: 2;
     align-self: flex-start;
