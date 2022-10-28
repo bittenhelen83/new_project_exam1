@@ -1,87 +1,102 @@
 import { displayMessage } from "./utils/displayMessage.js";
-import { getExistingFavs } from "./utils/favFunctions.js";
+import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
+import { options, corsFix } from "./constants/api.js";
+
 const recipeContainer = document.querySelector(".recipeContainer");
 
-const api = {
-	method: 'GET',
-	headers: {
-		'X-API-Key': ' 8d13f27b766444338fcdf22ed323afc8'
-	}
-};
-
-const url = "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=50"
-
-const corsFix = "https://noroffcors.herokuapp.com/" + url;
-
-async function getRecipe() {
+async function getRecipes() {
 
     try {
-        const response = await fetch(corsFix, api)
-
+        const response = await fetch(corsFix, options);
         const json = await response.json();
-    
         const recipes = json.results;
     
         console.log(recipes);
-    
-        recipes.forEach((recipe) => {
-            let cssClass ="far";
-    
-            const doesObjectExist = favourites.find(function(fav) {
-                return parseInt(fav.id) === recipe.id;
-            });
-    
-            if(doesObjectExist) {
-                cssClass = "fa";           
-            }
-            
-            recipeContainer.innerHTML += `<div class="recipe">
-                                            <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div></a>
-                                            <h2>${recipe.title}</h2>
-                                            <i class="${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}"></i>
-                                        </div>`
-                                        
-        });
+        
+        displayRecipes(recipes);
+        handleFavouritesButton();
+
     } catch(error) {
         displayMessage();
     }
 
-};
+}
 
-getRecipe();
+getRecipes();
 
-const favourites = getExistingFavs();
+function  displayRecipes(recipes) {
+    const recipeContainer = document.querySelector(".recipeContainer");
 
-const favButtons = document.querySelectorAll(".recipe i");
+    if (!recipeContainer) {
+        return;
+    }
 
-favButtons.forEach((button) => {
-    button.addEventListener("click", handleClick); 
-});
+    recipes.forEach((recipe) => {
+        let cssClass = "far";
+        
+        const resipeIsInFavourites = isInFavourites(recipe.id);
 
-function handleClick() {
+        if (resipeIsInFavourites) {
+            cssClass = "fa";
+        }
+
+        recipeContainer.innerHTML += `<div class="recipe">
+                                    <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div></a>
+                                    <h2>${recipe.title}</h2>
+                                    <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>
+                                    </div>`
+    });
+}
+
+function isInFavourites(id) {
+    const currentFavs = getExistingFavs();
+    const favExits = currentFavs.find(function (fav) {
+        return Number(fav.id) === Number(id);
+
+    });
+
+    return favExits;
+}
+
+function handleFavouritesButton() {
+    const favButtons = document.querySelectorAll(".recipe i");
+
+    if (favButtons.length === 0) {
+        return;
+    }
+
+    favButtons.forEach((button) => {
+        button.addEventListener("click", handleFavouriteClick);
+    });
+}
+
+function handleFavouriteClick() {
     this.classList.toggle("fa");
     this.classList.toggle("far");
 
     const id = this.dataset.id;
     const title = this.dataset.title;
+    const image = this.dataset.image;
 
-    const currentFavs = getExistingFavs();
+    const recipeIsInFavourites = isInFavourites(id);
 
-    const productExists = currentFavs.find(function(fav) {
-       return fav.id === id;  
-    });
-
-    if(!productExists) {
-        const recipe = { id: id, title: title};
-        currentFavs.push(recipe);
-        saveFavs(currentFavs);
-    }else {
-        const newFavs = currentFavs.filter(fav => fav.id !== id);
-        saveFavs(newFavs);
+    if (!recipeIsInFavourites) {
+        addToFavourites(id, title, image)
+    } else {
+        removeFromFavourites(id);
     }
 
 }
 
-function saveFavs(favs) {
-    localStorage.setItem("favourites", JSON.stringify(favs));
+function addToFavourites(id, title, image) {
+    const currentFavs = getExistingFavs();
+    const recipe = { id: id, title: title, image: image };
+    currentFavs.push(recipe);
+    saveFavs(currentFavs);
+}
+
+function removeFromFavourites(id) {
+    const currentFavs = getExistingFavs();
+    const newFavs = currentFavs.filter((fav) => fav.id !== id);
+    saveFavs(newFavs);
 }

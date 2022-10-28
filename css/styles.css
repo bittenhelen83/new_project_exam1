@@ -176,7 +176,7 @@ textarea {
     margin: 10px;
 }
 
-.sendButton {
+.seubmitButton {
     position: relative;
     border-radius: 25px;
     width: 150px;
@@ -186,6 +186,10 @@ textarea {
     cursor: pointer;
     background: #fff;
     color: #304C0C;    
+}
+
+.caracterCount {
+    color: #79A640;
 }
 
 .formError {

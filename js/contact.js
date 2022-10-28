@@ -6,6 +6,9 @@ const lastNameError = document.querySelector("#lastNameError");
 const email = document.querySelector("#email");
 const emailError = document.querySelector("#emailError");
 
+const message = document.querySelector("textarea");
+const characterCount = document.querySelector(".characterCount span");
+const submidtButton = document.querySelector(".submitButton");
 
 function validateForm() {
     event.preventDefault();
@@ -45,3 +48,10 @@ function validateEmail(email) {
     const patternMatches = regEx.test(email);
     return patternMatches;
 }
+
+message.onkeyup = function() {
+    const len = event.target.value.lenght;
+
+    characterCount.innerHTML = len;
+
+};
