@@ -10,18 +10,19 @@ const emailError = document.querySelector("#emailError");
 function validateForm() {
     event.preventDefault();
 
-    if(checkLength(firstName.value) === true) {
+    if(checkLength(firstName.value, 0) === true) {
         firstNameError.style.display = "none";
     } else {
         firstNameError.style.display = "block";
     }
 
-    // if (lastName.value.trim().lenght > 3) {
-    //     lastNameError.style.display = "none";
-    // } else {
-    //     lastNameError.style.display = "block";
-    // }
+    if(checkLength(lastName.value, 3) === true) {
+        lastNameError.style.display = "none";
+    } else {
+        lastNameError.style.display = "block";
+    }
 
+    
     // if (email.value.trim().lenght > 0) {
     //     firstNameError.style.display = "none";
     // } else {
@@ -32,8 +33,8 @@ function validateForm() {
 
 form.addEventListener("submit", validateForm);
 
-function checkLength(value) {
-    if(value.trim().length > 0) {
+function checkLength(value, len) {
+    if(value.trim().length > len) {
         return true;
     } else {
         return false;

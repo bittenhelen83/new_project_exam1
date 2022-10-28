@@ -35,12 +35,14 @@ async function getRecipe() {
         if(doesObjectExist) {
             cssClass = "fa";           
         }
-
+        
         recipeContainer.innerHTML += `<div class="recipe">
                                         <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div></a>
                                         <h2>${recipe.title}</h2>
                                         <i class="${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}"></i>
                                     </div>`
+
+                                    
     });
 
     const favButtons = document.querySelectorAll(".recipe i");
