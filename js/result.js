@@ -1,6 +1,8 @@
 
-
-
+try {
+} catch(error) {
+    displayMessage();
+}
 
 // import { displayMessage } from "./data/displayMessage.js";
 // const recipeContainer = document.querySelector(".recipeContainer");

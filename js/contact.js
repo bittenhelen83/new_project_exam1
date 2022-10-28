@@ -22,12 +22,11 @@ function validateForm() {
         lastNameError.style.display = "block";
     }
 
-    
-    // if (email.value.trim().lenght > 0) {
-    //     firstNameError.style.display = "none";
-    // } else {
-    //     firstNameError.style.display = "block";
-    // }
+    if(validateEmail(email.value) === true) {
+        emailError.style.display = "none";
+    } else {
+        emailError.style.display = "block";
+    }
 
 }
 
@@ -39,4 +38,10 @@ function checkLength(value, len) {
     } else {
         return false;
     }
+}
+
+function validateEmail(email) {
+    const regEx = /\S+@\S+\.\S+/;
+    const patternMatches = regEx.test(email);
+    return patternMatches;
 }

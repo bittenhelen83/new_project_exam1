@@ -1,5 +1,5 @@
-export function displayMessage(messageType,message,target) {
-    const element = document.querySelector(target);
+export function displayMessage() {
+    const element = document.querySelector(".recipeContainer");
 
-    element.innerHTML = `<div class="message ${messageType}">${message}</div>`
+    element.innerHTML = `<div class="message error">There was an error</div>`
 }
