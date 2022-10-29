@@ -1,14 +1,24 @@
+import {displayMessage} from "./utils/displayMessage.js"
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
-import { options, corsFix } from "./constants/options.js";
+// import { options, corsFix } from "./constants/options.js";
+import {search, corsFix} from "./constants/search.js"
+
+// ${searchInput.value}
+
+const queryString = document.location.search;
+
+const params = new URLSearchParams(queryString);
+
+const value = params.get("searchInput.value");
+
+console.log(value);
 
 async function getRecipes() {
 
     try {
-        const response = await fetch(corsFix, options);
+        const response = await fetch(corsFix, search, value);
         const json = await response.json();
         const recipes = json.results;
-    
-        console.log(recipes);
         
         displayRecipes(recipes);
         handleFavouritesButton();

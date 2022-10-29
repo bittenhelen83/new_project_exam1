@@ -1,56 +1,15 @@
-import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
-import { options, corsFix } from "./constants/options.js";
-
 const searchButton = document.querySelector(".searchButton");
+const searchInput = document.querySelector(".searchInput");
 
+searchButton.addEventListener("click", handleSearch);
 
-async function getRecipes() {
-
-    try {
-        
-        const response = await fetch(corsFix, options);
-        const json = await response.json();
-        const recipes = json.results;
-    
-        console.log(recipes);
-        
-        recipes.forEach((recipe) => {
-            
-        });
-        console.log(recipe);
-        
-    } catch(error) {
-        displayMessage();
+function handleSearch() {
+    if (searchInput.value.trim().length === 0) {
+        return;
+    } else {
+        window.location.href = `/recipes.html?search=${searchInput.value}`;
     }
 
-}
+};
 
-getRecipes();
-
-searchButton.forEach((button) => {
-    button.addEventListener("click");
-});
-
-console.log(button);
-
-// async function getRecipes() {
-//     try {
-//     const response = await fetch(corsFix, options);
-//     const json = await response.json();
-//     const recipes = json.results;
-        
-//     addRecipe(recipes);
-
-//     } catch(error) {
-//         displayMessage();
-//     }
-// }
-
-// getRecipes();
-
-// function addRecipe(recipes) {
-//     recipes.forEach(recipe => {
-//         console.log(recipe)
-//     })
-// }
-
+handleSearch();
