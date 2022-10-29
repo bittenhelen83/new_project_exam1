@@ -1,4 +1,3 @@
-import { displayMessage } from "./utils/displayMessage.js";
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import { options, corsFix } from "./constants/options.js";
 
@@ -38,9 +37,9 @@ function  displayRecipes(recipes) {
             cssClass = "fa";
         }
 
-        recipeContainer.innerHTML += `<div class="recipe">
-                                    <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div></a>
-                                    <h2>${recipe.title}</h2>
+        recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${recipe.id}">
+                                    <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
+                                    <h2>${recipe.title}</h2></a>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>
                                     </div>`
     });
