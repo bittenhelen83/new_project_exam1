@@ -5,6 +5,7 @@ export const options = {
         },
 };
 
-export const url = "https://api.spoonacular.com/recipes/646499";
+const url = 
+        "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=100";
 
-// export const corsFix = "https://noroffcors.herokuapp.com/" + url;
+export const corsFix = "https://noroffcors.herokuapp.com/" + url;
