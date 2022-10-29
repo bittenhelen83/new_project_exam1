@@ -176,16 +176,19 @@ textarea {
     margin: 10px;
 }
 
-.seubmitButton {
+button {
     position: relative;
     border-radius: 25px;
-    width: 150px;
-    height: 50px;
+    width: 100px;
+    height: 40px;
     border: none;
     outline: none;
     cursor: pointer;
     background: #fff;
-    color: #304C0C;    
+    font-size: 20px;
+    color: #304C0C;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .caracterCount {

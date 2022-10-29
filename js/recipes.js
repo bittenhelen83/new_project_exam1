@@ -2,8 +2,6 @@ import { displayMessage } from "./utils/displayMessage.js";
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import { options, corsFix } from "./constants/api.js";
 
-const recipeContainer = document.querySelector(".recipeContainer");
-
 async function getRecipes() {
 
     try {
@@ -100,3 +98,4 @@ function removeFromFavourites(id) {
     const newFavs = currentFavs.filter((fav) => fav.id !== id);
     saveFavs(newFavs);
 }
+

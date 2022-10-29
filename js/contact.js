@@ -8,7 +8,7 @@ const emailError = document.querySelector("#emailError");
 
 const message = document.querySelector("textarea");
 const characterCount = document.querySelector(".characterCount span");
-const submidtButton = document.querySelector(".submitButton");
+const submitButton = document.querySelector(".submitButton");
 
 function validateForm() {
     event.preventDefault();
@@ -49,9 +49,16 @@ function validateEmail(email) {
     return patternMatches;
 }
 
-message.onkeyup = function() {
+message.onkeyup = function () {
+    console.log(event.target.value.length);
+
     const len = event.target.value.lenght;
 
     characterCount.innerHTML = len;
 
+    if(len >= 5) {
+        submitButton.disabled = false;
+    } else {
+        submitButton.disabled = true;
+    }
 };
