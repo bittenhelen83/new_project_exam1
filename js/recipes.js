@@ -1,6 +1,6 @@
 import { displayMessage } from "./utils/displayMessage.js";
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
-import { options, corsFix } from "./constants/api.js";
+import { options, corsFix } from "./constants/options.js";
 
 async function getRecipes() {
 
