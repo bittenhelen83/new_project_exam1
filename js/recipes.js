@@ -1,9 +1,6 @@
 import {displayMessage} from "./utils/displayMessage.js"
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
-// import { options, corsFix } from "./constants/options.js";
-import {search, corsFix} from "./constants/search.js"
-
-// ${searchInput.value}
+import {options, corsFix} from "./constants/options.js"
 
 const queryString = document.location.search;
 
@@ -16,7 +13,7 @@ console.log(value);
 async function getRecipes() {
 
     try {
-        const response = await fetch(corsFix, search, value);
+        const response = await fetch(corsFix, options, value);
         const json = await response.json();
         const recipes = json.results;
         
@@ -24,7 +21,7 @@ async function getRecipes() {
         handleFavouritesButton();
 
     } catch(error) {
-        displayMessage();
+        recipeContainer.innerHTML = displayMessage();        
     }
 
 }
@@ -34,6 +31,7 @@ getRecipes();
 function  displayRecipes(recipes) {
     const recipeContainer = document.querySelector(".recipeContainer");
 
+    recipeContainer.innerHTML = "";
     if (!recipeContainer) {
         return;
     }
@@ -49,7 +47,7 @@ function  displayRecipes(recipes) {
 
         recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${recipe.id}">
                                     <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
-                                    <h2>${recipe.title}</h2></a>
+                                    <h2 class="recipeTitle">${recipe.title}</h2></a>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>
                                     </div>`
     });

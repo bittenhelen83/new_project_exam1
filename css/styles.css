@@ -233,12 +233,16 @@ button {
     width: 200px;
     border-radius: 25px;
     position: relative;
+    height: 300px;
 }
 
-.recipeName {
+.recipeTitle {
     justify-content: flex-start;
-    font-size: 18px;
-    margin-bottom: 20px;
+    font-size: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+
 }
 
 .recipe i {
@@ -246,9 +250,18 @@ button {
     left: 15px;
     bottom: 10px;
     font-size: 20px;
+    padding: 0 5px 5px 0;
 } 
 
 .recipe i.fa {
+    position: absolute;
+    bottom: 5px;
+    color: #fff;
+}
+
+.recipe i.far {
+    position: absolute;
+    bottom: 5px;
     color: #fff;
 }
 
@@ -261,6 +274,23 @@ button {
     margin-top: 0;
     border-radius: 25px 25px 0 0;
     max-width: 100%;
+}
+
+.loadingIndicator {
+    position: absolute;
+    top: 72%;
+    left: 50%;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    border-top: 10px solid #304C0C;
+    width: 60px;
+    height: 60px;
+    animation: spinner 4s  linear infinite;
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* Result styles */
@@ -293,17 +323,3 @@ footer {
     display: inline-block;
     vertical-align: middle;
 }
-
-/* footer {
-    display: inline;
-    height: 100px;
-    text-align: center;
-}
-
-footer p {
-    display: inline;
-}
-
-.footerLogo {
-    width: 35px;
-} */

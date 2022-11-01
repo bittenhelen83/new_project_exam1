@@ -7,19 +7,26 @@ const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
-const url = options + corsFix;
+console.log(id);
 
 async function getResult() {
 
     try {
-        const response = await fetch(url + results.id);
+        const response = await fetch(options, corsFixsFix, id);
         const json = await response.json();
-        const result = json.results;
+        const result = json.results.id;
     
         console.log(result);
         
-        displayResult(result);
-     
+        resulContainer.innerHTML = "";
+
+        result.forEach(function (singleResult) {
+            resulContainer.innerHTML += `<div class="singleResult">
+                                            <div class="thumbnailContainer"><img class="thumbnail" src="${singleResult.image}"/></div>
+                                            <h2>${singleResult.title}</h2></a>
+                                            </div>`
+        })
+
     } catch(error) {
         // displayMessage();
     }
@@ -27,17 +34,3 @@ async function getResult() {
 }
 
 getResult();
-
-function  displayResult(result) {
-    const resultContainer = document.querySelector(".resultContainer");
-
-    if (!resultContainer) {
-        return;
-    }
-
-    result.forEach((singleResult) => {
-        
-        resultContainer.innerHTML += `<div class="recipe">
-                                    </div>`
-    });
-}
