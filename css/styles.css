@@ -38,12 +38,12 @@ li {
 }
 
 a:link {
-    color: #79A640;
+    color: #304C0C;
     text-decoration: none;
 }
 
 a:visited {
-    color:#79A640;
+    color:#304C0C;
     text-decoration: none;    
 }
 
@@ -102,6 +102,7 @@ main {
 .searchFormSecond {
     text-align: center;
     top: 50%;
+    padding-bottom: 15px;
 }
 
 input {
@@ -217,27 +218,50 @@ button {
     padding-right: 50px;
 }
 
+.newsletterContainer {
+    flex: 1;
+    background-color: #304C0C;
+    border-radius: 50px;
+    margin-right: 0 auto;
+    margin: 20px;
+    height: 100%;
+}
+
+.signupMessage {
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 30px;
+}
+
+.signupButton {
+    position: relative;
+
+    background-color: #fff;
+    color: #304C0C;
+}
 
 /* Recipes styles */
 .recipeContainer {
+    position: relative;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 .recipe {
-    font-family: 'Ubuntu', sans-serif;
     background: #304C0C;
     color: #fff ;
-    margin: 20px;
+    margin: 15px;
     width: 200px;
-    border-radius: 25px;
     position: relative;
     height: 300px;
 }
 
 .recipeTitle {
-    justify-content: flex-start;
+    color: #fff;
+    position: absolute;
     font-size: 20px;
     padding-bottom: 10px;
     padding-left: 10px;
@@ -271,14 +295,20 @@ button {
 }
 
 .thumbnail {
-    margin-top: 0;
-    border-radius: 25px 25px 0 0;
-    max-width: 100%;
+    margin: 10px;
+    max-width: 90%;
+}
+
+.liContainer {
+    position: relative;
+    background-color: #79A640;
+    width: 100%;
+    height: 300px;
 }
 
 .loadingIndicator {
     position: absolute;
-    top: 72%;
+    top: 5%;
     left: 50%;
     border: 10px solid #fff;
     border-radius: 50%;
@@ -301,25 +331,30 @@ button {
     background-color: #79A640;
 }
 
-/* Footer styles */
-footer {
-    text-align: center;
-    margin: 10px;
-    font-size: 20px;
-    overflow: auto;
-    clear: both;
-    color: #79A640;
+.singleResult {
+    width: 600px;
+    height: 100%;
+    background-color: #304C0C;
 }
 
-.footerContainer {
+
+
+/* Footer styles */
+footer {
+ margin: 0 auto;
+ text-align: center;
+ padding: 25px;
+}
+
+footer div {
     display: inline;
-    vertical-align: middle;
-    padding: 10px;
-    text-transform: uppercase;
+    margin: 10px;
+    font-size: 20px;
+    color: #304C0C;
+
 }
 
 .footerLogo {
     width: 40px;
-    display: inline-block;
     vertical-align: middle;
 }

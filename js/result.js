@@ -19,11 +19,13 @@ async function getResult() {
         console.log(result);
         
         resulContainer.innerHTML = "";
-
-        result.forEach(function (singleResult) {
+        
+        result.forEach(function (singleResult, i) {
             resulContainer.innerHTML += `<div class="singleResult">
                                             <div class="thumbnailContainer"><img class="thumbnail" src="${singleResult.image}"/></div>
-                                            <h2>${singleResult.title}</h2></a>
+                                            <h2 class="recipeTitle">${singleResult.title}</h2></a>
+                                            <p class="ingredients">${singleResult.ingredients[i]}</p>
+                                            <p class="instructions">${singleResult.instructions[i]}</p>
                                             </div>`
         })
 
