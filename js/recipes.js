@@ -2,36 +2,46 @@ import {displayMessage} from "./utils/displayMessage.js"
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import {options, corsFix} from "./constants/options.js"
 
-const queryString = document.location.search;
+const recipeContainer = document.querySelector(".recipeContainer");
 
-const params = new URLSearchParams(queryString);
+// const queryString = document.location.search;
+// console.log(queryString);
 
-const value = params.get("searchInput.value");
+// const params = new URLSearchParams(queryString);
+// console.log(params);
 
-console.log(value);
+// const value = params.get(value);
+
+// console.log(value);
+
+const searchButton = document.querySelector(".searchButton");
+const inputText = document.getElementById("searchInput").value;
+
+searchButton.addEventListener("click", getRecipes);
 
 async function getRecipes() {
-
-    try {
-        const response = await fetch(corsFix, options, value);
+    if (inputText.value.trim().leght === 0) {
+        return;
+    } else {
+        const url = options + corsFix + inputText;        
+        const response = await fetch(url);
         const json = await response.json();
         const recipes = json.results;
         
-        displayRecipes(recipes);
-        handleFavouritesButton();
-
-    } catch(error) {
-        recipeContainer.innerHTML = displayMessage();        
+        console.log(recipes);
+ 
+        recipeContainer.innerHTML = "";
+    
+        displayRecipes(recipes)
+        handleFavouritesButton();    
+    
     }
 
-}
+};
 
 getRecipes();
 
-function  displayRecipes(recipes) {
-    const recipeContainer = document.querySelector(".recipeContainer");
-
-    recipeContainer.innerHTML = "";
+function displayRecipes(recipes) {
     if (!recipeContainer) {
         return;
     }
@@ -48,11 +58,11 @@ function  displayRecipes(recipes) {
         recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${recipe.id}">
                                     <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
                                     <h2 class="recipeTitle">${recipe.title}</h2></a>
+                                    <div class="cookingTime">${recipe.readyInMinutes} mins</div>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>
                                     </div>`
     });
 }
-
 function isInFavourites(id) {
     const currentFavs = getExistingFavs();
     const favExits = currentFavs.find(function (fav) {
@@ -74,6 +84,7 @@ function handleFavouritesButton() {
         button.addEventListener("click", handleFavouriteClick);
     });
 }
+
 
 function handleFavouriteClick() {
     this.classList.toggle("fa");

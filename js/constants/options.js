@@ -6,6 +6,6 @@ export const options = {
 };
 
 const url = 
-        "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=100";
+        "https://api.spoonacular.com/recipes/complexSearch?query=healthy&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=100?";
 
 export const corsFix = "https://noroffcors.herokuapp.com/" + url;

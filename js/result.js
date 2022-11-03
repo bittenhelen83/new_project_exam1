@@ -7,14 +7,15 @@ const params = new URLSearchParams(queryString);
 
 const id = params.get("id");
 
-console.log(id);
+const url = options + corsFix + "?id=" + id; 
 
+console.log(url);
 async function getResult() {
 
     try {
-        const response = await fetch(options, corsFixsFix, id);
+        const response = await fetch(url);
         const json = await response.json();
-        const result = json.results.id;
+        const result = json.results;
     
         console.log(result);
         
