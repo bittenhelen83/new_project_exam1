@@ -19,22 +19,22 @@ const inputText = document.getElementById("#searchInput");
 searchButton.addEventListener("click", getRecipes);
 
 async function getRecipes() {
-    if (inputText.value.trim().length === 0) {
-        return;
-    } else {
-        const url = corsFix + inputText + options;        
+    // if (inputText.value.trim().length === 0) {
+    //     return;
+    // } else {
+        const url = corsFix + options + "&query=" + inputText;        
         const response = await fetch(url);
         const json = await response.json();
         const recipes = json.results;
         
-        console.log(recipes);    
+        console.log(recipes);
  
         recipeContainer.innerHTML = "";
     
         displayRecipes(recipes)
         handleFavouritesButton();    
     
-    }
+    // }
 
 };
 
