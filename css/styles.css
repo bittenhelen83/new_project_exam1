@@ -29,6 +29,12 @@ h2 {
     padding: 20px;
 }
 
+.newsletter {
+    float: right;
+    height: auto;
+    width: 200px;
+}
+
 li {
     display: inline;
     width: 500px;
@@ -52,7 +58,6 @@ a:hover {
 }
 
 nav {
-    margin: 0 auto;
     text-align: center;
     padding: 20px;
 }

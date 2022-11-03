@@ -1,6 +1,5 @@
 const searchButton = document.querySelector(".searchButton");
 const searchInput = document.querySelector(".searchInput");
-// const searchValue = document.getElementById("searcInput").value;
 
 searchButton.addEventListener("click", handleSearch);
 

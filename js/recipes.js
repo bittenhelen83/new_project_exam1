@@ -2,7 +2,6 @@ import {displayMessage} from "./utils/displayMessage.js"
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import {options, corsFix} from "./constants/options.js"
 
-const recipeContainer = document.querySelector(".recipeContainer");
 
 // const queryString = document.location.search;
 // console.log(queryString);
@@ -23,12 +22,12 @@ async function getRecipes() {
     if (inputText.value.trim().leght === 0) {
         return;
     } else {
-        const url = options + corsFix + inputText;        
+        const url = corsFix + inputText + options;        
         const response = await fetch(url);
         const json = await response.json();
         const recipes = json.results;
         
-        console.log(recipes);
+        console.log(recipes);    
  
         recipeContainer.innerHTML = "";
     
@@ -42,6 +41,8 @@ async function getRecipes() {
 getRecipes();
 
 function displayRecipes(recipes) {
+    const recipeContainer = document.querySelector(".recipeContainer");
+
     if (!recipeContainer) {
         return;
     }
