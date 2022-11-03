@@ -14,12 +14,12 @@ import {options, corsFix} from "./constants/options.js"
 // console.log(value);
 
 const searchButton = document.querySelector(".searchButton");
-const inputText = document.getElementById("searchInput").value;
+const inputText = document.getElementById("#searchInput");
 
 searchButton.addEventListener("click", getRecipes);
 
 async function getRecipes() {
-    if (inputText.value.trim().leght === 0) {
+    if (inputText.value.trim().lenght === 0) {
         return;
     } else {
         const url = corsFix + inputText + options;        
