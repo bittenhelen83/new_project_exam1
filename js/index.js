@@ -1,4 +1,4 @@
-const searchButton = document.querySelector(".searchButton");
+const searchButton = document.querySelector("#searchButton");
 const searchInput = document.querySelector("#searchInput");
 
 searchButton.addEventListener("click", handleSearch);

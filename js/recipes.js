@@ -2,41 +2,51 @@ import {displayMessage} from "./utils/displayMessage.js"
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import {options, corsFix} from "./constants/options.js"
 
+// const queryString = document.location.search;
+// console.log(queryString);
 
-const queryString = document.location.search;
-console.log(queryString);
+// const params = new URLSearchParams(queryString);
+// console.log(params);
 
-const params = new URLSearchParams(queryString);
-console.log(params);
+// const value = params.get(inputText.value);
+// console.log(value);
 
-const value = params.get(value);
-
-console.log(value);
-
-const searchButton = document.getElementById("#searchButton");
-const inputText = document.getElementById("#searchInput");
+const searchButton = document.getElementById("searchButton");
+const inputText = document.getElementById("searchInput");
 
 searchButton.addEventListener("click", async() => await getRecipes(inputText.value));
 
-async function getRecipes(searchTerm="") {
-    console.log({searchTerm, searchButton});
+async function getRecipes(searchTerm='') {
+    try {
     let recipes;
     corsFix;
     if(searchTerm) {
-        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&maxFat=25&number=2`, options);
+        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&number=100`, options);
         const json = await response.json();
         recipes = json.results;
-
+        console.log(recipes);
         displayRecipes(recipes)
         handleFavouritesButton();
-     };
+        
+        return;
+    }
+     const response = await fetch(corsFix, options);
+     const json = await response.json();
+     recipes = json.results;    
+     console.log(recipes);
+     displayRecipes(recipes);
+     handleFavouritesButton();
+
+    } catch {
+        displayMessage();
+    }
 };
 
 getRecipes();
 
 function displayRecipes(recipes) {
     const recipeContainer = document.querySelector(".recipeContainer");
-
+    recipeContainer.innerHTML = "";
     if (!recipeContainer) {
         return;
     }
@@ -50,10 +60,9 @@ function displayRecipes(recipes) {
             cssClass = "fa";
         }
 
-        recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${recipe.id}">
+        recipeContainer.innerHTML += `<div class="recipe"><a href="${recipe.sourceUrl}">
                                     <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
                                     <h2 class="recipeTitle">${recipe.title}</h2></a>
-                                    <div class="cookingTime">${recipe.readyInMinutes} mins</div>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>
                                     </div>`
     });

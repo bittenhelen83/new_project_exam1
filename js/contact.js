@@ -1,14 +1,13 @@
-const form = document.querySelector("#contactForm");
-const firstName = document.querySelector("#firstName");
-const firstNameError = document.querySelector("#firstNameError");
-const lastName = document.querySelector("#lastName");
-const lastNameError = document.querySelector("#lastNameError");
-const email = document.querySelector("#email");
-const emailError = document.querySelector("#emailError");
-
-const message = document.querySelector("textarea");
-const characterCount = document.querySelector(".characterCount span");
-const submitButton = document.querySelector(".submitButton");
+const form = document.getElementById("contactForm");
+const firstName = document.getElementById("firstName");
+const firstNameError = document.getElementById("firstNameError");
+const lastName = document.getElementById("lastName");
+const lastNameError = document.getElementById("lastNameError");
+const email = document.getElementById("email");
+const emailError = document.getElementById("emailError");
+const message = document.getElementById("textarea");
+const characterCount = document.getElementById("characterCount span");
+const submitButton = document.getElementById("submitButton");
 
 function validateForm() {
     event.preventDefault();
