@@ -3,39 +3,33 @@ import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import {options, corsFix} from "./constants/options.js"
 
 
-// const queryString = document.location.search;
-// console.log(queryString);
+const queryString = document.location.search;
+console.log(queryString);
 
-// const params = new URLSearchParams(queryString);
-// console.log(params);
+const params = new URLSearchParams(queryString);
+console.log(params);
 
-// const value = params.get(value);
+const value = params.get(value);
 
-// console.log(value);
+console.log(value);
 
-const searchButton = document.querySelector(".searchButton");
+const searchButton = document.getElementById("#searchButton");
 const inputText = document.getElementById("#searchInput");
 
-searchButton.addEventListener("click", getRecipes);
+searchButton.addEventListener("click", async() => await getRecipes(inputText.value));
 
-async function getRecipes() {
-    if (inputText.value.trim().length === 0) {
-        return;
-    } else {
-        const url = options + corsFix + "&query=" + inputText.value;    
-        const response = await fetch(url);
+async function getRecipes(searchTerm="") {
+    console.log({searchTerm, searchButton});
+    let recipes;
+    corsFix;
+    if(searchTerm) {
+        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&maxFat=25&number=2`, options);
         const json = await response.json();
-        const recipes = json.results;
-        
-        console.log(recipes);
- 
-        recipeContainer.innerHTML = "";
-    
-        displayRecipes(recipes)
-        handleFavouritesButton();    
-    
-    }
+        recipes = json.results;
 
+        displayRecipes(recipes)
+        handleFavouritesButton();
+     };
 };
 
 getRecipes();
@@ -64,6 +58,7 @@ function displayRecipes(recipes) {
                                     </div>`
     });
 }
+
 function isInFavourites(id) {
     const currentFavs = getExistingFavs();
     const favExits = currentFavs.find(function (fav) {
@@ -85,7 +80,6 @@ function handleFavouritesButton() {
         button.addEventListener("click", handleFavouriteClick);
     });
 }
-
 
 function handleFavouriteClick() {
     this.classList.toggle("fa");
@@ -117,4 +111,3 @@ function removeFromFavourites(id) {
     const newFavs = currentFavs.filter((fav) => fav.id !== id);
     saveFavs(newFavs);
 }
-
