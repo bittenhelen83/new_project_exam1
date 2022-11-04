@@ -19,10 +19,10 @@ const inputText = document.getElementById("#searchInput");
 searchButton.addEventListener("click", getRecipes);
 
 async function getRecipes() {
-    // if (inputText.value.trim().length === 0) {
-    //     return;
-    // } else {
-        const url = corsFix + options + "&query=" + inputText;        
+    if (inputText.value.trim().length === 0) {
+        return;
+    } else {
+        const url = options + corsFix + "&query=" + inputText.value;    
         const response = await fetch(url);
         const json = await response.json();
         const recipes = json.results;
@@ -34,7 +34,7 @@ async function getRecipes() {
         displayRecipes(recipes)
         handleFavouritesButton();    
     
-    // }
+    }
 
 };
 
