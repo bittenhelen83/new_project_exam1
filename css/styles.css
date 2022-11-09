@@ -202,10 +202,12 @@ button {
 }
 
 .formError {
+    text-align: left;
     display: none;
     color: red;
     font-size: 12px;
     margin-top: 2px;
+    margin-left: 11px;
 }
 
 .aboutContainer {

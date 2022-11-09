@@ -35,8 +35,7 @@
                     <input type="text" id="email" name="email" placeholder="Email"/>
                     <div class="formError" id="emailError">Please enter valid email address</div>
                     <textarea name="message" id="message" cols="30" rows="10" placeholder="Your message..."></textarea>
-                    <div id="characterCount">Characters: <span>0</span></div>
-                    <button type="submit" disabled>Send</button>
+                    <button class="submitButton" type="submit">Send</button>
                 </form>
         </div>
         <div class="aboutContainer">
@@ -54,10 +53,10 @@
         <div id="newsletterContainer">
             <div>
                 <div class="signupMessage">Sign up to our newsletter here and get your inspiration and new recipes every week:</div>
-                <form>
-                    <input type="text" id="email" name="email" placeholder="Email"/>
-                    <div class="formError" id="emailError">Please enter valid email address</div>
-                    <button class="signupButton" type="submit">Subscribe</button>
+                <form id="subscribeForm">
+                    <input type="text" id="subcribeEmail" name="email" placeholder="Email"/>
+                    <div class="formError" id="subscribeEmailError">Please enter valid email address</div>
+                    <button class="subscribeButton" type="submit">Subscribe</button>
                 </form>
         </div>
         </div>

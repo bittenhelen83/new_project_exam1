@@ -2,17 +2,16 @@ import {displayMessage} from "./utils/displayMessage.js"
 import { getExistingFavs, saveFavs } from "./utils/favFunctions.js";
 import {options, corsFix} from "./constants/options.js"
 
-// const queryString = document.location.search;
-// console.log(queryString);
-
-// const params = new URLSearchParams(queryString);
-// console.log(params);
-
-// const value = params.get(inputText.value);
-// console.log(value);
-
 const searchButton = document.getElementById("searchButton");
 const inputText = document.getElementById("searchInput");
+
+const queryString = document.location.search;
+
+const params = new URLSearchParams(queryString);
+
+const searchInput = params.get("search");
+
+console.log(searchInput);
 
 searchButton.addEventListener("click", async() => await getRecipes(inputText.value));
 
@@ -21,10 +20,11 @@ async function getRecipes(searchTerm='') {
     let recipes;
     corsFix;
     if(searchTerm) {
-        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}&number=100`, options);
+        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}?&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=50`, options);
         const json = await response.json();
         recipes = json.results;
         console.log(recipes);
+    
         displayRecipes(recipes)
         handleFavouritesButton();
         
@@ -33,7 +33,7 @@ async function getRecipes(searchTerm='') {
      const response = await fetch(corsFix, options);
      const json = await response.json();
      recipes = json.results;    
-     console.log(recipes);
+
      displayRecipes(recipes);
      handleFavouritesButton();
 
@@ -60,7 +60,7 @@ function displayRecipes(recipes) {
             cssClass = "fa";
         }
 
-        recipeContainer.innerHTML += `<div class="recipe"><a href="${recipe.sourceUrl}">
+        recipeContainer.innerHTML += `<div class="recipe"><a href="/result.html?id=${recipe.id}">
                                     <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
                                     <h2 class="recipeTitle">${recipe.title}</h2></a>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>

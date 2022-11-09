@@ -2,18 +2,14 @@ import { displayMessage } from "./utils/displayMessage.js";
 import { options, corsFix } from "./constants/options.js";
 
 const queryString = document.location.search;
-
 const params = new URLSearchParams(queryString);
-
 const id = params.get("id");
+// const url = options + corsFix + "?id=" + id; 
 
-const url = options + corsFix + "?id=" + id; 
-
-console.log(url);
 async function getResult() {
 
     try {
-        const response = await fetch(url);
+        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${recipe.id}?&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=50`, options);
         const json = await response.json();
         const result = json.results;
     
