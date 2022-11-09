@@ -6,13 +6,15 @@ const searchButton = document.getElementById("searchButton");
 const inputText = document.getElementById("searchInput");
 
 const queryString = document.location.search;
-
 const params = new URLSearchParams(queryString);
-
 const searchInput = params.get("search");
 
-console.log(searchInput);
-
+if (searchInput) {
+    getRecipes(searchInput);
+    inputText.value = searchInput;
+} else {
+    getRecipes();
+}
 searchButton.addEventListener("click", async() => await getRecipes(inputText.value));
 
 async function getRecipes(searchTerm='') {
@@ -22,18 +24,17 @@ async function getRecipes(searchTerm='') {
     if(searchTerm) {
         const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?query=${searchTerm}?&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=50`, options);
         const json = await response.json();
-        recipes = json.results;
-        console.log(recipes);
-    
+        const recipes = json.results;
+        console.log(response);
         displayRecipes(recipes)
         handleFavouritesButton();
         
         return;
     }
-     const response = await fetch(corsFix, options);
-     const json = await response.json();
-     recipes = json.results;    
-
+    const response = await fetch(corsFix, options);
+    const json = await response.json();
+    recipes = json.results;    
+    console.log(recipes);
      displayRecipes(recipes);
      handleFavouritesButton();
 
@@ -41,8 +42,6 @@ async function getRecipes(searchTerm='') {
         displayMessage();
     }
 };
-
-getRecipes();
 
 function displayRecipes(recipes) {
     const recipeContainer = document.querySelector(".recipeContainer");
@@ -60,7 +59,7 @@ function displayRecipes(recipes) {
             cssClass = "fa";
         }
 
-        recipeContainer.innerHTML += `<div class="recipe"><a href="/result.html?id=${recipe.id}">
+        recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${recipe.id}">
                                     <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
                                     <h2 class="recipeTitle">${recipe.title}</h2></a>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>

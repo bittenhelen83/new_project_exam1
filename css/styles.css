@@ -141,7 +141,9 @@ input {
     color: #fff;    
 }
 
-.filterBoxes {
+.filterContainer {
+    display: inline-flex;
+    align-items: center;
     text-align: center;
     text-transform: uppercase;
     font-weight: bold;
@@ -336,6 +338,7 @@ button {
 
 /* Result styles */
 .resultContainer {
+    height: 300px;
     display: inline-flex;
     flex-wrap: wrap;
     justify-content: center;
