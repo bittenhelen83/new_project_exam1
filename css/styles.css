@@ -34,11 +34,22 @@ h2 {
     height: auto;
     width: 300px;
 }
+.navContainer {
+    width: 100%;
+    text-align: center;
+}
 
-li {
-    display: inline;
-    width: 500px;
-    padding: 15px;
+.navBar {
+}
+
+.hamburgerMenu {
+    display: none;
+}
+
+ul {
+    text-align: center;
+    position: relative;
+    display: inline-block;
     font-size: 20px;
     text-transform: uppercase;
 }
@@ -57,18 +68,9 @@ a:hover {
     text-decoration: underline;
 }
 
-nav {
-    text-align: center;
-    padding: 20px;
-}
-
 .active {
     color: #304C0C;
     text-decoration: none;
-}
-
-.header {
-    height: 100px;
 }
 
 /* Error styles */
@@ -387,14 +389,9 @@ footer div {
    } 
    main {
     width: 100%;
-    height: 500px;
     background-color: #79A640;
    }
-   .nav {
-    width: 100%;
-
-   }
-   #searchInput {
+  #searchInput {
     background: #fff;
     width: 200px;
     height: 30px;
@@ -416,5 +413,12 @@ footer div {
     background: #304C0C;
     color: #fff;   
     font-size: 12px; 
+}
+.navBar {
+    display: none;
+}
+
+.hamburgerMenu {
+    
 }
   }
