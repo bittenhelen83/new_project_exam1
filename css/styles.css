@@ -520,5 +520,16 @@ footer div {
       #menuToggle input:checked ~ ul {
         transform: none;
       }
-      
+    
+    footer div {
+        display: inline-block;
+        margin: 10px;
+        font-size: 20px;
+        color: #304C0C;
+    }
+    
+    .footerLogo {
+        width: 40px;
+        vertical-align: middle;
+    }
 }
