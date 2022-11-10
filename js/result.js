@@ -11,16 +11,20 @@ console.log(id);
 
 async function getSingleResult() {
     try    {
-        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/complexSearch?&type=main%20course&instructionsRequired=true&addRecipeInformation=true&sortDirection=asc&number=50&apiKey=8d13f27b766444338fcdf22ed323afc8&id=${id}`,);
-        const json = await response.json();
-        const singleResult = json.results;
-        
+        const response = await fetch(`https://noroffcors.herokuapp.com/https://api.spoonacular.com/recipes/${id}/analyzedInstructions?apiKey=8d13f27b766444338fcdf22ed323afc8`);
+        const singleResult = await response.json();
+      
         console.log(singleResult);
         
-        resultContainer.innerhtml = `<div><div class="thumbnailContainer"><img class="thumbnail" src="${singleResult.image}"/></div>
-                                    <h2 class="recipeTitle">${singleResult.title}</h2>
-                                    </div>`
+        resultContainer.innerHTML = "";
 
+        singleResult.forEach(singleResult => {
+
+            resultContainer.innerhtml += `<div>
+                                    <p class="steps">${singleResult.steps[0].step}</p>
+                                    </div>`
+            console.log(singleResult.steps[0].step);
+        });                         
     } catch {
         // displayMessage();
     }
