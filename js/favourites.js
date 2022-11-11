@@ -9,7 +9,7 @@ if(favourites.length === 0) {
 }
 
 favourites.forEach(favourite => {
-    recipeContainer.innerHTML += `<div class="recipe">
+    recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${favourite.id}">
                                     <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${favourite.image}"/></div></a>
                                     <h2 class="recipeTitle">${favourite.title}</h2>
                                     <i class="fa fa-heart"></i>

@@ -66,7 +66,7 @@ a:hover {
 }
 
 .active {
-    color: #304C0C;
+    color: #79A640;
     text-decoration: none;
 }
 
@@ -138,20 +138,6 @@ input {
     cursor: pointer;
     background: #304C0C;
     color: #fff;    
-}
-
-.filterContainer {
-    display: inline-flex;
-    align-items: center;
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 13px;
-    background-color: rgba(255,255,255, 0.5);
-    border-radius: 25px;
-    width: 600px;
-    margin: 0 auto;
-    padding-bottom: 10px;
 }
 
 /* Form styles */
@@ -331,33 +317,31 @@ button {
 
 /* Result styles */
 .resultContainer {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    padding: 30px;
-    justify-content: space-around;
-
+    display: inline-flex;
+    justify-content: space-evenly;
 }
 
-.singleResult {
+.ingredients {
     flex: 2;
-    align-self: flex-start;
     background-color: #304C0C;
     color: #fff;
-    margin: 20px;
-    margin-left: 100px;
-    height: 100%;
     padding: 10px;
+    margin: 10px;
 }
 
+.instructions {
+    flex: 2;
+    background-color: #304C0C;
+    color: #fff;
+    padding: 10px;
+    margin: 10px;
+    height: 100%;
+}
 .image {
     flex: 1;
-    align-self: flex-start;
-    background-color: #304C0C;
-    margin: 20px;
-    margin-left: 100px;
-    height: 100%;
+    margin: 10px;
     padding: 10px;
+    background-color: #304C0C;
 }
 
 /* Footer styles */
@@ -380,6 +364,7 @@ footer div {
     vertical-align: middle;
 }
 
+
 @media only screen and (max-width: 768px) {
    .logo {
     width: 70px;
@@ -389,13 +374,20 @@ footer div {
    main {
     width: 100%;
     background-color: #79A640;
-    height: 300px;
+    height: 100%;
    }
 
    .searchForm {
-    position: absolute;
-    left: 5%;
-    top: 30%;
+    position: fixed;
+    left: 2%;
+    top: 25%;
+   }
+
+   .newsletter {
+    position: fixed;
+    right: -10%;
+    top: 20%;    
+    width: 200px;
    }
 
     #searchInput {
@@ -428,12 +420,6 @@ footer div {
     header {
         height: 150px;
     }
-
-    .newsletter {
-        float: right;
-        height: auto;
-        width: 150px;
-    }
     
     .hamburgerMenu {
         display: inline-block;
@@ -453,9 +439,6 @@ footer div {
       }
       #menuToggle a:hover {
         color: #79A640;
-      }
-      #menuToggle a:active {
-        text-decoration: underline;
       }
       #menuToggle input {
         display: block;
@@ -532,4 +515,85 @@ footer div {
         width: 40px;
         vertical-align: middle;
     }
+    .resultContainer {
+        display: inline-flex;
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+    
+    .ingredients {
+        flex: 1;
+        background-color: #304C0C;
+        color: #fff;
+    }
+    
+    .instructions {
+        flex: 1;
+        background-color: #304C0C;
+        color: #fff;
+        
+    }
+    .image {
+        flex: 1;
+        width: 325px;
+        background-color: #304C0C;
+    }
+    
+}
+
+@media only screen and (min-width: 769px max-width: 991px) {
+    .searchForm {
+        position: fixed;
+        left: 3%;
+        top: 50%;
+       }
+    
+       .newsletter {
+        position: fixed;
+        right: 3%;
+        top: 25%;    
+        width: 200px;
+       }
+       .resultContainer {
+        display: inline-flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .ingredients {
+        flex: 1;
+        background-color: #304C0C;
+        color: #fff;
+        width: 300px;
+    }
+    
+    .instructions {
+        flex: 1;
+        background-color: #304C0C;
+        color: #fff;
+        width: 300px;
+    }
+    .image {
+        width: 325px;
+        background-color: #304C0C;
+        width: 300px;
+    }
+          
+}
+
+@media only screen and (min-width: 992px) {
+    .searchForm {
+        position: fixed;
+        left: 3%;
+        top: 50%;
+       }
+    
+       .newsletter {
+        position: fixed;
+        right: 1%;
+        top: 50%;    
+        width: 500px;
+        position: static;
+       }
 }
