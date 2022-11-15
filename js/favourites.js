@@ -7,7 +7,6 @@ const recipeContainer = document.querySelector(".recipeContainer");
 if(favourites.length === 0) {
     recipeContainer.innerHTML = `<p>You have noe favourites yet, go back to Recipes</p>`; 
 }
-
 favourites.forEach(favourite => {
     recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${favourite.id}">
                                     <a href="result.html"><div class="thumbnailContainer"><img class="thumbnail" src="${favourite.image}"/></div></a>
