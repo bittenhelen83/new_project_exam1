@@ -18,6 +18,7 @@ body {
 h1 {
     font-size: 40;
     text-align: center;
+    text-transform: uppercase;
 }
 
 h2 {
@@ -67,6 +68,7 @@ a:visited {
 }
 
 a:hover {
+    color: #79A640;
     text-decoration: underline;
 }
 
@@ -174,7 +176,7 @@ textarea {
     margin: 10px;
 }
 
-button {
+.submitButton {
     position: relative;
     border-radius: 25px;
     width: 100px;
@@ -189,6 +191,21 @@ button {
     margin-bottom: 15px;
 }
 
+.subscribeButton {
+    position: relative;
+    border-radius: 25px;
+    width: 100px;
+    height: 40px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #fff;
+    font-size: 20px;
+    color: #304C0C;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    left: 32%;
+}
 .caracterCount {
     color: #79A640;
 }
@@ -234,7 +251,6 @@ button {
 
 .signupButton {
     position: relative;
-
     background-color: #fff;
     color: #304C0C;
 }
@@ -446,6 +462,7 @@ footer div {
       }
       #menuToggle a:hover {
         color: #79A640;
+        text-decoration: underline;
       }
       #menuToggle input {
         display: block;

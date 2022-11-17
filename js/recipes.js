@@ -60,7 +60,7 @@ function displayRecipes(recipes) {
         }
 
         recipeContainer.innerHTML += `<div class="recipe"><a href="result.html?id=${recipe.id}">
-                                    <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}"/></div>
+                                    <div class="thumbnailContainer"><img class="thumbnail" src="${recipe.image}" alt="recipe image"/></div>
                                     <h2 class="recipeTitle">${recipe.title}</h2></a>
                                     <i class="fa-heart ${cssClass}" data-id="${recipe.id}" data-title="${recipe.title}" data-image="${recipe.image}"></i>
                                     </div>`
