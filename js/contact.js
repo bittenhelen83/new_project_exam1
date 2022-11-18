@@ -5,7 +5,10 @@ const lastName = document.querySelector("#lastName");
 const lastNameError = document.querySelector("#lastNameError");
 const email = document.querySelector("#email");
 const emailError = document.querySelector("#emailError");
-const message = document.querySelector("textarea");
+
+const subscribeForm = document.querySelector("#subscribeForm");
+const subscribeEmail = document.querySelector("#subcribeEmail");
+const subscribeEmailError = document.querySelector("#subscribeEmailError");
 
 function validateForm() {
     event.preventDefault();
@@ -27,10 +30,22 @@ function validateForm() {
     } else {
         emailError.style.display = "block";
     }
-
 }
 
 form.addEventListener("submit", validateForm);
+
+function validateSubscribeForm() {
+    event.preventDefault();
+
+    if(validateEmail(subscribeEmail.value) === true) {
+        subscribeEmailError.style.display = "none";
+    } else {
+        subscribeEmailError.style.display = "block";
+    }
+}
+console.log(subscribeForm);
+
+subscribeForm.addEventListener("submit", validateSubscribeForm);
 
 function checkLength(value, len) {
     if(value.trim().length > len) {
@@ -42,6 +57,6 @@ function checkLength(value, len) {
 
 function validateEmail(email, subscribeEmail) {
     const regEx = /\S+@\S+\.\S+/;
-    const patternMatches = regEx.test(email);
+    const patternMatches = regEx.test(email, subscribeEmail);
     return patternMatches;
 }

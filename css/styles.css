@@ -72,7 +72,7 @@ a:hover {
     text-decoration: underline;
 }
 
-.active {
+a.active {
     color: #79A640;
     text-decoration: none;
 }
@@ -386,8 +386,11 @@ footer div {
     vertical-align: middle;
 }
 
-
 @media only screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
    .logo {
     width: 70px;
     float: right;
@@ -567,19 +570,20 @@ footer div {
 }
 
 @media only screen and (min-width: 769px max-width: 991px) {
+
     .searchForm {
         position: fixed;
         left: 3%;
-        top: 50%;
+        top: 25%;
        }
     
-       .newsletter {
+   .newsletter {
         position: fixed;
         right: 3%;
         top: 25%;    
         width: 200px;
        }
-       .resultContainer {
+   .resultContainer {
         display: inline-flex;
         flex-direction: column;
         text-align: center;
@@ -604,6 +608,7 @@ footer div {
         width: 300px;
     }
           
+
 }
 
 @media only screen and (min-width: 992px) {
