@@ -53,9 +53,9 @@ function displayRecipes(recipes) {
     recipes.forEach((recipe) => {
         let cssClass = "far";
         
-        const resipeIsInFavourites = isInFavourites(recipe.id);
+        const recipeIsInFavourites = isInFavourites(recipe.id);
 
-        if (resipeIsInFavourites) {
+        if (recipeIsInFavourites) {
             cssClass = "fa";
         }
 

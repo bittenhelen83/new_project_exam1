@@ -387,20 +387,29 @@ footer div {
 }
 
 @media only screen and (max-width: 768px) {
+    
+    main {
+        overflow-x: hidden;
+    }
+
     .container {
         flex-direction: column;
     }
 
-   .logo {
+    .formContainer {
+        margin-left: 0px;
+    }
+    
+    .logo {
     width: 70px;
     float: right;
    } 
 
-   main {
-    width: 100%;
-    background-color: #79A640;
-    height: 100%;
-   }
+    main {
+        width: 100%;
+        background-color: #79A640;
+        height: 100%;
+    }
 
    .searchForm {
     position: fixed;
